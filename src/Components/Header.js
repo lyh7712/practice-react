@@ -1,26 +1,23 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Styled from 'styled-components';
+import styled from 'styled-components';
 
-const Header = Styled.header`
-  width: 100%;
-  height: 50px;
+const Header = styled.header`
+  margin-bottom: 30px;
 `;
 
-const List = Styled.ul`
+const List = styled.ul`
   display: flex;
 `;
 
-const Item = Styled.li`
-  width: 95px;
-  height: 40px;
-  font-weight: bold;
-  text-align: center;
-  margin: 6px;
+const Item = styled.li`
+  margin-right: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
   background-color: ${(props) => (props.current ? '#EBC73C' : 'transparent')};
 `;
 
-const SLink = Styled(Link)`
+const SLink = styled(Link)`
   display: flex;
   align-items: center;
   margin-top: 10px;

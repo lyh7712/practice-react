@@ -1,26 +1,27 @@
 import { createGlobalStyle } from 'styled-components';
-import { reset } from 'styled-reset';
+import reset from 'styled-reset';
 
 const globalStyles = createGlobalStyle`
   ${reset};
-  a {
-    text-decoration: none;
-    color: inherit;
+  a{
+    text-decoration:none;
+    color:inherit;
   }
-
-  * {
+  *{
     box-sizing:border-box;
   }
-
-  body {
+  body{
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size:18px;
-    padding-top:30px;
-    padding-left:30px;
+    padding:30px;
+  }
+  h1 {
+  font-size:32px;
+  margin-bottom:30px;
   }
 
-  h2 {
-    padding-left: 24px;
+  p {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 `;
 
