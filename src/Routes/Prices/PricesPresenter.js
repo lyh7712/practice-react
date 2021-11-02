@@ -1,34 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Section from '../../Components/section';
 import Loader from '../../Components/Loader';
+import Price from '../../Components/Price';
 
-const Conatiner = styled.div`
-  padding: 0px 10px;
-`;
-
-const PricesPresenter = ({ tickers, error, loading }) =>
+const PricesPresenter = ({ prices, loading }) =>
   loading ? (
     <Loader />
   ) : (
-    <Conatiner>
-      {tickers && tickers.length > 0 && (
-        <Section>
-          {tickers.map((coin) => (
-            <div>
-              {coin.name} /{coin.symbol}: ${coin.beta_value}
-            </div>
-          ))}
-        </Section>
-      )}
-    </Conatiner>
+    prices.map((price) => <Price key={price.id} {...price} />)
   );
 
 PricesPresenter.propTypes = {
-  tickers: PropTypes.object,
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
+  prices: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      symbol: PropTypes.string.isRequired,
+      quotes: PropTypes.shape({
+        USD: PropTypes.shape({
+          price: PropTypes.number.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 export default PricesPresenter;

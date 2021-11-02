@@ -4,8 +4,6 @@ const apiUrl = axios.create({
   baseURL: 'https://api.coinpaprika.com/v1/',
 });
 
-export const coinsInfo = {
-  tickers: () => apiUrl.get('tickers'),
-  exchanges: () => apiUrl.get('exchanges'),
-  coins: () => apiUrl.get('coins'),
-};
+export const getPrices = () => apiUrl.get('tickers');
+export const getExchanges = () => apiUrl.get('exchanges');
+export const getCoins = () => apiUrl.get('coins');

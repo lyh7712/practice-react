@@ -1,27 +1,29 @@
 import React from 'react';
 import CoinsPresenter from './CoinsPresenter';
-import { coinsInfo } from '../../Components/api';
+import { getCoins } from '../../Components/api';
 
 export default class extends React.Component {
   state = {
     coins: null,
     loading: true,
-    error: null,
   };
 
-  async componentDidMount() {
+  getCoins = async () => {
     try {
-      const { data: coins } = await coinsInfo.coins();
+      const { data: coins } = await getCoins();
       this.setState({ coins });
-    } catch {
-      this.setState({ error: "Can't find coinInfo" });
+    } catch (e) {
+      console.log(e);
     } finally {
       this.setState({ loading: false });
     }
+  };
+
+  async componentDidMount() {
+    this.getCoins();
   }
 
   render() {
-    const { coins, error, loading } = this.state;
-    return <CoinsPresenter coins={coins} error={error} loading={loading} />;
+    return <CoinsPresenter {...this.state} />;
   }
 }

@@ -1,35 +1,28 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Section from '../../Components/section';
 import Loader from '../../Components/Loader';
+import Exchange from '../../Components/Exchanges';
 
-const Container = styled.div`
-  padding: 0px 10px;
-`;
-
-const ExchangesPresenter = ({ exchanges, error, loading }) =>
+const ExchangesPresenter = ({ exchanges, loading }) =>
   loading ? (
     <Loader />
   ) : (
-    <Container>
-      {exchanges && exchanges.length > 0 && (
-        <Section>
-          {exchanges.map((coin) => (
-            <div>
-              <span>{coin.name}</span>
-              <p>{coin.description}</p>
-            </div>
-          ))}
-        </Section>
-      )}
-    </Container>
+    exchanges.map((exchange) => <Exchange key={exchange.id} {...exchange} />)
   );
 
 ExchangesPresenter.propTypes = {
-  exchanges: PropTypes.object,
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
+  exchanges: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      linsk: PropTypes.shape({
+        website: PropTypes.arrayOf(PropTypes.string.isRequired),
+      }),
+    }).isRequired
+  ).isRequired,
 };
 
 export default ExchangesPresenter;
