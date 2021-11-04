@@ -1,6 +1,6 @@
 import React from 'react';
 import CoinsPresenter from './CoinsPresenter';
-import { getCoins } from '../../Components/api';
+import { getCoinDetail, getCoins } from '../../Components/api';
 
 export default class extends React.Component {
   state = {

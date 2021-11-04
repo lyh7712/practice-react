@@ -4,6 +4,7 @@ import Coins from '../Routes/Coins';
 import Prices from '../Routes/Prices';
 import Exchanges from '../Routes/Exchanges';
 import Header from './Header';
+import Detail from '../Routes/Detail/DetailContainer';
 
 export default () => {
   return (
@@ -13,6 +14,7 @@ export default () => {
         <Route path='/' exact component={Prices} />
         <Route path='/exchanges' exact component={Exchanges} />
         <Route path='/coins' exact component={Coins} />
+        <Route path='/coins/:id' component={Detail} />
       </>
     </Router>
   );

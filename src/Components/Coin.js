@@ -1,16 +1,25 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-bottom: 14px;
+`;
 
 const Ranking = styled.span`
   font-weight: 600;
 `;
 
-const Coin = ({ name, symbol, rank }) => (
+const SLink = styled(Link)`
+  text-decoration: underline;
+`;
+
+const Coin = ({ id, name, symbol, rank }) => (
   <Container>
-    <Ranking>#{rank}</Ranking> {name}/{symbol}
+    <SLink to={`coins/${id}`}>
+      <Ranking>#{rank}</Ranking> {name}/{symbol}
+    </SLink>
   </Container>
 );
 

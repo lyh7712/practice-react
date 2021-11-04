@@ -11,6 +11,7 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
+  height: 30px;
   margin-right: 20px;
   text-transform: uppercase;
   font-weight: 600;
@@ -33,7 +34,7 @@ export default withRouter(({ location: { pathname } }) => (
       <Item current={pathname === '/exchanges'}>
         <SLink to='/exchanges'>Exchanges</SLink>
       </Item>
-      <Item current={pathname === '/coins'}>
+      <Item current={pathname === '/coins' || pathname.includes('/coins')}>
         <SLink to='/coins'>Coins</SLink>
       </Item>
     </List>
