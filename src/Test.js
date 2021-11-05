@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from 'react';
 
-const useTitle = (initialTitle) => {
-  const [title, setTitle] = useState(initialTitle);
+const useDeviceOrientation = () => {};
 
-  const updateTitle = () => {
-    const htmlTitle = document.querySelector('title');
-    htmlTitle.innerText = title;
+const useFavicon = (initialIcon) => {
+  const [icon, setIcon] = useState(initialIcon);
+
+  const updateIcon = () => {
+    const link = document.querySelector('head link');
+    link.href = icon;
   };
-  useEffect(updateTitle, [title]);
-  return setTitle;
+  return updateIcon;
 };
 
 const Test = () => {
-  const titleUpdater = useTitle('...Loading');
-  setTimeout(() => titleUpdater('Home'), 3000);
-
-  return <div>Test App</div>;
+  return (
+    <>
+      <div>Test App</div>
+      <button
+        onClick={useFavicon(
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png'
+        )}
+      >
+        changeIcon
+      </button>
+    </>
+  );
 };
 
 export default Test;
